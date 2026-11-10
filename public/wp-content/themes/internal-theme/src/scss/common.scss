@@ -1,17 +1,1 @@
-:root {
-	color-scheme: light;
-}
-
-body {
-	margin: 0;
-	font-family: sans-serif;
-	line-height: 1.7;
-}
-
-.site-header,
-.site-main,
-.site-footer {
-	max-width: 72rem;
-	margin-inline: auto;
-	padding: 1.5rem;
-}
+@use './base/index';
