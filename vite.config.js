@@ -63,37 +63,48 @@ export default defineConfig(({ mode }) => {
 				generateBundle: {
 					order: 'post',
 					handler(_options, bundle) {
-						const asset = bundle['.vite/manifest.json'];
-						if (!asset) return;
-						const manifest = JSON.parse(String(asset.source));
-						// Keep one output per SCSS entry even when identical CSS is deduplicated.
+						// Preserve separate CSS entry paths even for identical or empty styles.
 						for (const [name, file] of Object.entries(styles)) {
+							const expected = name + '.min.css';
+							if (bundle[expected]) continue;
 							const source = relative(theme, file).replaceAll(
 								'\\',
 								'/',
 							);
-							const expected = `${name}.min.css`;
-							const entry = manifest[source];
-							if (!bundle[expected]) {
-								this.emitFile({
-									type: 'asset',
-									fileName: expected,
-									source: bundle[entry?.file]?.source ?? '',
-								});
-							}
-							manifest[source] = {
-								...entry,
-								file: expected,
-								src: source,
-								isEntry: true,
-							};
+							const original = Object.values(bundle).find(
+								(item) =>
+									item.type === 'asset' &&
+									item.fileName.endsWith('.css') &&
+									(item.originalFileNames?.some(
+										(original) =>
+											original.replaceAll('\\', '/') ===
+												source ||
+											resolve(theme, original) === file,
+									) ||
+										item.names?.includes(name + '.css')),
+							);
+							this.emitFile({
+								type: 'asset',
+								fileName: expected,
+								source: original?.source ?? '',
+							});
 						}
-						asset.source = JSON.stringify(manifest, null, 2);
 					},
 				},
 			},
 			{
 				name: 'wordpress-development',
+				resolveId(id) {
+					if (id === '/@internal-theme/reload')
+						return '\0internal-theme-reload';
+				},
+				load(id) {
+					if (id === '\0internal-theme-reload')
+						return readFileSync(
+							resolve(workspace, 'scripts/dev-client.js'),
+							'utf8',
+						);
+				},
 				configureServer(server) {
 					server.httpServer.once('listening', () => {
 						writeFileSync(marker, JSON.stringify({ origin }));
@@ -116,7 +127,7 @@ export default defineConfig(({ mode }) => {
 			},
 		],
 		build: {
-			manifest: true,
+			manifest: false,
 			outDir: resolve(theme, 'dist'),
 			rolldownOptions: {
 				input: {

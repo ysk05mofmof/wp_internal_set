@@ -24,4 +24,8 @@ export default [
 		files: ['public/wp-content/themes/internal-theme/src/js/**/*.js'],
 		languageOptions: { globals: globals.browser },
 	},
+	{
+		files: ['scripts/dev-client.js'],
+		languageOptions: { globals: globals.browser },
+	},
 ];

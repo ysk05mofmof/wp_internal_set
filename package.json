@@ -6,11 +6,12 @@
 		"node": ">=24 <25"
 	},
 	"scripts": {
-		"dev": "vite",
+		"dev": "node scripts/dev.mjs",
 		"build": "vite build",
 		"lint": "eslint . && prettier --check .",
 		"format": "prettier --write .",
 		"lint:php": "node scripts/php-tools.mjs phpcs",
+		"lint:php:syntax": "node scripts/lint-php-syntax.mjs",
 		"fix:php": "node scripts/php-tools.mjs phpcbf",
 		"composer": "node scripts/php-tools.mjs composer",
 		"setup:editor": "node scripts/setup-editor.mjs"
@@ -19,8 +20,8 @@
 		"@eslint/js": "^10.0.1",
 		"eslint": "^10.14.0",
 		"globals": "^17.14.0",
-		"prettier": "^3.0.0",
-		"sass": "^1.0.0",
+		"prettier": "3.9.10",
+		"sass": "~1.108.1",
 		"vite": "^8.3.7"
 	}
 }

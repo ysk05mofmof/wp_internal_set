@@ -5,7 +5,6 @@
 !/.editorconfig
 !/README.md
 !/.vscode/
-!/.github/
 !/package.json
 !/package-lock.json
 !/composer.json
