@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ruleset name="Internal Theme">
+  <description>WordPress coding standards for the Internal theme.</description>
+  <file>public/wp-content/themes/internal-theme</file>
+  <exclude-pattern>*/vendor/*</exclude-pattern>
+  <exclude-pattern>*/node_modules/*</exclude-pattern>
+  <exclude-pattern>*/dist/*</exclude-pattern>
+  <arg name="extensions" value="php"/>
+  <arg value="ps"/>
+  <rule ref="WordPress"/>
+  <rule ref="WordPress.WP.I18n">
+    <properties><property name="text_domain" type="array"><element value="internal-theme"/></property></properties>
+  </rule>
+  <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+    <properties><property name="prefixes" type="array"><element value="internal_theme"/></property></properties>
+  </rule>
+</ruleset>

@@ -1,0 +1,21 @@
+{
+	"name": "internal/theme",
+	"description": "Development tools for the Internal classic theme",
+	"type": "wordpress-theme",
+	"license": "proprietary",
+	"require-dev": {
+		"wp-coding-standards/wpcs": "^3.0",
+		"squizlabs/php_codesniffer": "^3.13",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		},
+		"sort-packages": true
+	},
+	"scripts": {
+		"lint": "phpcs",
+		"format": "phpcbf"
+	}
+}

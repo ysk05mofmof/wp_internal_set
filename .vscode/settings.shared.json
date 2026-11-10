@@ -1,0 +1,36 @@
+{
+	"editor.formatOnSave": true,
+	"editor.formatOnSaveMode": "file",
+	"editor.insertSpaces": false,
+	"editor.tabSize": 4,
+	"editor.detectIndentation": false,
+	"[yaml]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 4
+	},
+	"files.eol": "\n",
+	"[php]": {
+		"editor.defaultFormatter": "ValeryanM.vscode-phpsab",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[javascript][json][jsonc][scss][css][markdown][yaml][html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"prettier.configPath": ".prettierrc.json",
+	"prettier.ignorePath": ".prettierignore",
+	"eslint.workingDirectories": ["."],
+	"phpsab.composerJsonPath": "composer.json",
+	"phpsab.standard": "phpcs.xml.dist",
+	"phpsab.snifferMode": "onSave",
+	"phpsab.excludeGlobs": [
+		"**/vendor/**",
+		"**/node_modules/**",
+		"**/wp-admin/**",
+		"**/wp-includes/**"
+	],
+	"files.watcherExclude": {
+		"**/node_modules/**": true,
+		"**/vendor/**": true
+	}
+}

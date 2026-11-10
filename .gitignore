@@ -1,6 +1,23 @@
 # ルートディレクトリは基本的に監視対象外
 /*
 !/.gitignore
+!/.gitattributes
+!/.editorconfig
+!/README.md
+!/.vscode/
+!/.github/
+!/package.json
+!/package-lock.json
+!/composer.json
+!/composer.lock
+!/vite.config.js
+!/eslint.config.js
+!/phpcs.xml.dist
+!/.prettierrc.json
+!/.prettierignore
+!/.nvmrc
+!/.env.example
+!/scripts/
 
 !/public/
 /public/*
@@ -12,3 +29,15 @@
 /public/wp-content/themes/*
 
 !/public/wp-content/themes/internal-theme/
+
+**/node_modules/
+**/vendor/
+**/dist/
+**/.env
+**/.env.*
+!**/.env.example
+**/.vite-dev.json
+**/.php-tools.json
+**/.php-cli.ini
+/.vscode/settings.local.json
+/.vscode/settings.json

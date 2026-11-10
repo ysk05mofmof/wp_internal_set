@@ -1,0 +1,26 @@
+{
+	"name": "internal-theme",
+	"private": true,
+	"type": "module",
+	"engines": {
+		"node": ">=24 <25"
+	},
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"lint": "eslint . && prettier --check .",
+		"format": "prettier --write .",
+		"lint:php": "node scripts/php-tools.mjs phpcs",
+		"fix:php": "node scripts/php-tools.mjs phpcbf",
+		"composer": "node scripts/php-tools.mjs composer",
+		"setup:editor": "node scripts/setup-editor.mjs"
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"eslint": "^10.14.0",
+		"globals": "^17.14.0",
+		"prettier": "^3.0.0",
+		"sass": "^1.0.0",
+		"vite": "^8.3.7"
+	}
+}
